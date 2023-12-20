@@ -9,12 +9,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    inputs:
-      parameters:
-        - name: length_password
-          description: 'Длина пароля'
-          required: true
-
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
@@ -27,6 +21,10 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Set environment variable
+      run: echo "LENGTH_PASSWORD=12" >> $GITHUB_ENV 
 
     - name: Run the application
-      run: python task.py ${{ inputs.length_password }}
+      run: python task.py ${{ env.LENGTH_PASSWORD }}
