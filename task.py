@@ -5,7 +5,7 @@ import random
 class GeneratePassword:
     def __init__(self,length_password):
         alphabet = string.ascii_letters + string.digits + string.punctuation
-        length_password = length_password
+        length_password = None
 
     def generate(self):
         try:
@@ -17,3 +17,14 @@ class GeneratePassword:
                 print(f"length password: {self.length_password}, password: {password}")
         except:
             print('Введите цифру')
+
+    def start(self):
+        print('''
+Добро пожаловать в генератор паролей!
+''')
+        while True:
+            self.length_password = input('''
+Введите длину пароля (введите цифру от 8 до 32): ''')
+            self.generate()
+            
+            
