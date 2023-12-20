@@ -3,14 +3,14 @@ import string
 import random
 
 class GeneratePassword:
-    def __init__(self,length_password):
-        alphabet = string.ascii_letters + string.digits + string.punctuation
-        length_password = None
+    def __init__(self):
+        self.alphabet = string.ascii_letters + string.digits + string.punctuation
+        self.length_password = None
 
     def generate(self):
         try:
-            length_password = int(self.length_password)
-            if length_password < 8 or length_password > 32:
+            self.length_password = int(self.length_password)
+            if self.length_password < 8 or self.length_password > 32:
                 print('Введите цифру от 8 до 32')
             else:
                 password= ''.join(secrets.choice(self.alphabet) for i in range(self.length_password))
@@ -30,4 +30,7 @@ class GeneratePassword:
                 print('До свидания')
                 break
             self.generate()
+
+gen_pas = GeneratePassword()
+gen_pas.start()
             
