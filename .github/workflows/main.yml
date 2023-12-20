@@ -9,6 +9,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        length_password: [8, 12, 16, 18, 22, 24, 28, 32]
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
@@ -22,8 +25,5 @@ jobs:
       run: |
         python -m pip install --upgrade pip
 
-    - name: Set environment variable
-      run: echo "LENGTH_PASSWORD=12" >> $GITHUB_ENV 
-
     - name: Run the application
-      run: python task.py ${{ env.LENGTH_PASSWORD }}
+      run: python task.py ${{ matrix.length_password }}

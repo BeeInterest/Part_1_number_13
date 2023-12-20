@@ -24,15 +24,12 @@ class GeneratePassword:
 Добро пожаловать в генератор паролей!
 Если захотите выйти из генератора паролей, введите "exit"
 ''')
-        while True:
-            if len(sys.argv) > 1:
-                self.length_password = sys.argv[1]
-                if self.length_password == 'exit':
-                    print('До свидания')
-                    break
-                self.generate()
-            else:
-                print("Укажите длину пароля")
+        print(sys.argv)
+        if len(sys.argv) > 1:
+            self.length_password = sys.argv[1]
+            self.generate()
+        else:
+            print("Длина пароля не указана")
                 
 
 gen_pas = GeneratePassword()
