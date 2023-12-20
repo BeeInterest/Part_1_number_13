@@ -21,10 +21,13 @@ class GeneratePassword:
     def start(self):
         print('''
 Добро пожаловать в генератор паролей!
+Если захотите выйти из генератора паролей, введите "exit"
 ''')
         while True:
             self.length_password = input('''
 Введите длину пароля (введите цифру от 8 до 32): ''')
+            if self.length_password == 'exit':
+                print('До свидания')
+                break
             self.generate()
-            
             
