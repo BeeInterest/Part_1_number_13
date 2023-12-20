@@ -1,11 +1,12 @@
 import secrets
 import string
 import random
+import sys
 
 class GeneratePassword:
     def __init__(self):
         self.alphabet = string.ascii_letters + string.digits + string.punctuation
-        self.length_password = None
+        self.length_password = 8
 
     def generate(self):
         try:
@@ -24,12 +25,15 @@ class GeneratePassword:
 Если захотите выйти из генератора паролей, введите "exit"
 ''')
         while True:
-            self.length_password = input('''
-Введите длину пароля (введите цифру от 8 до 32): ''')
-            if self.length_password == 'exit':
-                print('До свидания')
-                break
-            self.generate()
+            if len(sys.argv) > 1:
+                self.length_password = sys.argv[1]
+                if self.length_password == 'exit':
+                    print('До свидания')
+                    break
+                self.generate()
+            else:
+                print("Укажите длину пароля")
+                
 
 gen_pas = GeneratePassword()
 gen_pas.start()
