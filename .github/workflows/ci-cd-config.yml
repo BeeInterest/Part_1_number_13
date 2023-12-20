@@ -1,0 +1,15 @@
+name: CI/CD Configuration
+
+on:
+  workflow_run:
+    workflows: ["CI/CD Pipeline"]
+    types:
+      - inputs
+
+jobs:
+  configuration:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set input parameter
+      id: set_param
+      run: echo "length_password=${{ github.event.client_payload.length_password }}" >> $GITHUB_ENV
