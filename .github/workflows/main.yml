@@ -4,14 +4,18 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      len_pas:
+        type: string
+        description: Length password from 8 to 32
+        
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        length_password: [8, 12, 16, 18, 22, 24, 28, 32]
+    
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
@@ -26,4 +30,4 @@ jobs:
         python -m pip install --upgrade pip
 
     - name: Run the application
-      run: python task.py ${{ matrix.length_password }}
+      run: python task.py ${{ github.event.inputs.len_pas }}
