@@ -9,6 +9,8 @@ on:
       len_pas:
         type: string
         description: Length password from 8 to 32
+        required: true
+        default: '8'
         
 
 jobs:
